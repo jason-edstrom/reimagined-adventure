@@ -1,0 +1,628 @@
+openapi: 3.0.0
+paths:
+  /api/v1:
+    get:
+      operationId: getHello
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /api/v1/users/me:
+    get:
+      operationId: getMyProfile
+      summary: Get user me API
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  UserOutput {
+
+                  } 
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseApiErrorResponse"
+      tags:
+        - users
+      security:
+        - bearer: []
+  /api/v1/users:
+    get:
+      operationId: getUsers
+      summary: Get users as a list API
+      parameters:
+        - name: limit
+          required: false
+          in: query
+          description: Optional, defaults to 100
+          schema:
+            type: number
+        - name: offset
+          required: false
+          in: query
+          description: Optional, defaults to 0
+          schema:
+            type: number
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  UserOutput {
+
+                  }  [ ] 
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseApiErrorResponse"
+      tags:
+        - users
+  "/api/v1/users/{id}":
+    get:
+      operationId: getUser
+      summary: Get user by id API
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  UserOutput {
+
+                  } 
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseApiErrorResponse"
+      tags:
+        - users
+    patch:
+      operationId: updateUser
+      summary: Update user API
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUserInput"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  UserOutput {
+
+                  } 
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseApiErrorResponse"
+      tags:
+        - users
+  /api/v1/auth/login:
+    post:
+      operationId: login
+      summary: User login API
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginInput"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  AuthTokenOutput {
+
+                  } 
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseApiErrorResponse"
+      tags:
+        - auth
+  /api/v1/auth/register:
+    post:
+      operationId: registerLocal
+      summary: User registration API
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterInput"
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  RegisterOutput {
+
+                  } 
+      tags:
+        - auth
+  /api/v1/auth/refresh-token:
+    post:
+      operationId: refreshToken
+      summary: Refresh access token API
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RefreshTokenInput"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  AuthTokenOutput {
+
+                  } 
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseApiErrorResponse"
+      tags:
+        - auth
+  /api/v1/articles:
+    post:
+      operationId: createArticle
+      summary: Create article API
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateArticleInput"
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  ArticleOutput {
+
+                  } 
+      tags:
+        - articles
+      security:
+        - bearer: []
+    get:
+      operationId: getArticles
+      summary: Get articles as a list API
+      parameters:
+        - name: limit
+          required: false
+          in: query
+          description: Optional, defaults to 100
+          schema:
+            type: number
+        - name: offset
+          required: false
+          in: query
+          description: Optional, defaults to 0
+          schema:
+            type: number
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  ArticleOutput {
+
+                  }  [ ] 
+      tags:
+        - articles
+      security:
+        - bearer: []
+  "/api/v1/articles/{id}":
+    get:
+      operationId: getArticle
+      summary: Get article by id API
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  ArticleOutput {
+
+                  } 
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseApiErrorResponse"
+      tags:
+        - articles
+    patch:
+      operationId: updateArticle
+      summary: Update article API
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateArticleInput"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  ArticleOutput {
+
+                  } 
+      tags:
+        - articles
+      security:
+        - bearer: []
+    delete:
+      operationId: deleteArticle
+      summary: Delete article by id API
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        "204":
+          description: ""
+      tags:
+        - articles
+info:
+  title: Nestjs API starter
+  description: Nestjs API description
+  version: "1.0"
+  contact: {}
+tags: []
+servers: []
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+  schemas:
+    UserOutput:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        username:
+          type: string
+        roles:
+          example:
+            - USER
+          type: array
+          items:
+            type: string
+        email:
+          type: string
+        isAccountDisabled:
+          type: boolean
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - id
+        - name
+        - username
+        - roles
+        - email
+        - isAccountDisabled
+        - createdAt
+        - updatedAt
+    "SwaggerBaseApiResponseFor class UserOutput {\n} ":
+      type: object
+      properties:
+        meta:
+          type: object
+        data:
+          $ref: "#/components/schemas/UserOutput"
+      required:
+        - meta
+        - data
+    BaseApiErrorObject:
+      type: object
+      properties:
+        statusCode:
+          type: number
+        message:
+          type: string
+        localizedMessage:
+          type: string
+        errorName:
+          type: string
+        details:
+          type: object
+        path:
+          type: string
+        requestId:
+          type: string
+        timestamp:
+          type: string
+      required:
+        - statusCode
+        - message
+        - errorName
+        - details
+        - path
+        - requestId
+        - timestamp
+    BaseApiErrorResponse:
+      type: object
+      properties:
+        error:
+          $ref: "#/components/schemas/BaseApiErrorObject"
+      required:
+        - error
+    "SwaggerBaseApiResponseFor class UserOutput {\n}  [ ] ":
+      type: object
+      properties:
+        meta:
+          type: object
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserOutput"
+      required:
+        - meta
+        - data
+    UpdateUserInput:
+      type: object
+      properties:
+        name:
+          type: string
+        password:
+          type: string
+    LoginInput:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password
+    AuthTokenOutput:
+      type: object
+      properties:
+        accessToken:
+          type: string
+        refreshToken:
+          type: string
+      required:
+        - accessToken
+        - refreshToken
+    "SwaggerBaseApiResponseFor class AuthTokenOutput {\n} ":
+      type: object
+      properties:
+        meta:
+          type: object
+        data:
+          $ref: "#/components/schemas/AuthTokenOutput"
+      required:
+        - meta
+        - data
+    RegisterInput:
+      type: object
+      properties:
+        name:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+      required:
+        - name
+        - username
+        - password
+        - email
+    RegisterOutput:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        username:
+          type: string
+        roles:
+          example:
+            - USER
+          type: array
+          items:
+            type: string
+        email:
+          type: string
+        isAccountDisabled:
+          type: boolean
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - id
+        - name
+        - username
+        - roles
+        - email
+        - isAccountDisabled
+        - createdAt
+        - updatedAt
+    "SwaggerBaseApiResponseFor class RegisterOutput {\n} ":
+      type: object
+      properties:
+        meta:
+          type: object
+        data:
+          $ref: "#/components/schemas/RegisterOutput"
+      required:
+        - meta
+        - data
+    RefreshTokenInput:
+      type: object
+      properties:
+        refreshToken:
+          type: string
+      required:
+        - refreshToken
+    CreateArticleInput:
+      type: object
+      properties:
+        title:
+          type: string
+        post:
+          type: string
+      required:
+        - title
+        - post
+    AuthorOutput:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+      required:
+        - id
+        - name
+    ArticleOutput:
+      type: object
+      properties:
+        id:
+          type: number
+        title:
+          type: string
+        post:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        author:
+          $ref: "#/components/schemas/AuthorOutput"
+      required:
+        - id
+        - title
+        - post
+        - createdAt
+        - updatedAt
+        - author
+    "SwaggerBaseApiResponseFor class ArticleOutput {\n} ":
+      type: object
+      properties:
+        meta:
+          type: object
+        data:
+          $ref: "#/components/schemas/ArticleOutput"
+      required:
+        - meta
+        - data
+    "SwaggerBaseApiResponseFor class ArticleOutput {\n}  [ ] ":
+      type: object
+      properties:
+        meta:
+          type: object
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/ArticleOutput"
+      required:
+        - meta
+        - data
+    UpdateArticleInput:
+      type: object
+      properties:
+        title:
+          type: string
+        post:
+          type: string
+      required:
+        - title
+        - post
