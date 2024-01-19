@@ -1,0 +1,61 @@
+{
+  "name": "nestjs-starter-rest-api",
+  "root": ".",
+  "sourceRoot": "src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "nestjs-starter-rest-api:build"
+      },
+      "configurations": {
+        "debug": {
+          "inspect": "inspect"
+        }
+      }
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/nestjs-starter-rest-api",
+        "main": "src\\main",
+        "tsConfig": "tsconfig.build.json"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "src/**/*.ts",
+          "test/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/nestjs-starter-rest-api"
+      ],
+      "options": {
+        "passWithNoTests": true,
+        "jestConfig": "jest.config.ts"
+      }
+    },
+    "e2e": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "passWithNoTests": true,
+        "jestConfig": "jest.e2e-config.ts"
+      }
+    }
+  },
+  "tags": [],
+  "$schema": "node_modules/nx/schemas/project-schema.json"
+}

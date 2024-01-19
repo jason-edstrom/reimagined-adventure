@@ -13,21 +13,17 @@
   ],
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "nest build",
+    "build": "nx build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
-    "start:dev": "nest start --watch --preserveWatchOutput",
-    "start:debug": "nest start --debug --watch",
+    "start": "nx serve",
+    "start:debug": "nx serve --configuration=debug",
     "start:prod": "node dist/src/main",
     "cli:dev": "ts-node -r tsconfig-paths/register src/cli.ts",
     "cli:prod": "node dist/src/cli.js",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
+    "lint": "nx lint",
     "lint:fix": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest --runInBand",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
+    "test": "nx test",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json --runInBand",
     "typeorm": "typeorm-ts-node-commonjs -d ./ormconfig.ts",
     "migration:generate": "ts-node node_modules/.bin/typeorm migration:generate -d ormconfig.ts migrations/$npm_config_name",
     "migration:run": "ts-node node_modules/.bin/typeorm migration:run -d ormconfig.ts",
@@ -35,7 +31,8 @@
     "doc:serve": "npx compodoc -p tsconfig.json -w -s -r 8001",
     "doc:generate": "npx compodoc -p tsconfig.json",
     "prepare": "husky install",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "e2e": "nx e2e"
   },
   "lint-staged": {
     "**/*.ts": [
@@ -107,7 +104,10 @@
     "ts-loader": "^9.4.1",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.3",
+    "nx": "15.8.5",
+    "@nrwl/nest": "15.8.5",
+    "@nrwl/jest": "15.8.5"
   },
   "jest": {
     "testResultsProcessor": "jest-sonar-reporter",
@@ -129,5 +129,8 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "nx": {
+    "targets": {}
   }
 }
