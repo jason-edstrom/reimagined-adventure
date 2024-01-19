@@ -63,6 +63,7 @@
     "dotenv": "^16.0.2",
     "fastify-swagger": "^5.2.0",
     "nest-openapi-tools": "^5.0.1",
+    "nx": "^17.2.8",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
