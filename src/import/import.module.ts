@@ -1,9 +1,9 @@
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Module } from '@nestjsx/common';
 
 import { SharedModule } from '../shared/shared.module';
-import { Import } from './entities/import.entity';
 import { ImportsController } from './controllers/import.controller';
+import { Import } from './entities/import.entity';
 import { ImportsService } from './services/imports.service';
 
 @Module({

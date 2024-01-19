@@ -21,4 +21,5 @@ import { UserModule } from './user/user.module';
   controllers: [AppController],
   providers: [AppService],
 })
+// @AppRootModule()
 export class AppModule {}

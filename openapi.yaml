@@ -7,6 +7,10 @@ paths:
       responses:
         "200":
           description: ""
+          content:
+            application/json:
+              schema:
+                type: string
   /api/v1/users/me:
     get:
       operationId: getMyProfile
@@ -18,9 +22,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class UserOutput {\r
-
-                  } "
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  UserOutput {
+                      static _OPENAPI_METADATA_FACTORY() {
+                          return { id: { required: true, type: () => Number }, name: { required: true, type: () => String }, username: { required: true, type: () => String }, roles: { required: true, enum: require("../../auth/constants/role.constant").ROLE, isArray: true }, email: { required: true, type: () => String }, isAccountDisabled: { required: true, type: () => Boolean }, createdAt: { required: true, type: () => String }, updatedAt: { required: true, type: () => String } };
+                      }
+                  } 
         "401":
           description: ""
           content:
@@ -41,12 +49,16 @@ paths:
           in: query
           description: Optional, defaults to 100
           schema:
+            minimum: 0
+            default: 100
             type: number
         - name: offset
           required: false
           in: query
           description: Optional, defaults to 0
           schema:
+            minimum: 0
+            default: 0
             type: number
       responses:
         "200":
@@ -54,9 +66,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class UserOutput {\r
-
-                  }  [ ] "
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  UserOutput {
+                      static _OPENAPI_METADATA_FACTORY() {
+                          return { id: { required: true, type: () => Number }, name: { required: true, type: () => String }, username: { required: true, type: () => String }, roles: { required: true, enum: require("../../auth/constants/role.constant").ROLE, isArray: true }, email: { required: true, type: () => String }, isAccountDisabled: { required: true, type: () => Boolean }, createdAt: { required: true, type: () => String }, updatedAt: { required: true, type: () => String } };
+                      }
+                  }  [ ] 
         "401":
           description: ""
           content:
@@ -81,9 +97,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class UserOutput {\r
-
-                  } "
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  UserOutput {
+                      static _OPENAPI_METADATA_FACTORY() {
+                          return { id: { required: true, type: () => Number }, name: { required: true, type: () => String }, username: { required: true, type: () => String }, roles: { required: true, enum: require("../../auth/constants/role.constant").ROLE, isArray: true }, email: { required: true, type: () => String }, isAccountDisabled: { required: true, type: () => Boolean }, createdAt: { required: true, type: () => String }, updatedAt: { required: true, type: () => String } };
+                      }
+                  } 
         "404":
           description: ""
           content:
@@ -113,9 +133,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class UserOutput {\r
-
-                  } "
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  UserOutput {
+                      static _OPENAPI_METADATA_FACTORY() {
+                          return { id: { required: true, type: () => Number }, name: { required: true, type: () => String }, username: { required: true, type: () => String }, roles: { required: true, enum: require("../../auth/constants/role.constant").ROLE, isArray: true }, email: { required: true, type: () => String }, isAccountDisabled: { required: true, type: () => Boolean }, createdAt: { required: true, type: () => String }, updatedAt: { required: true, type: () => String } };
+                      }
+                  } 
         "404":
           description: ""
           content:
@@ -141,9 +165,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class AuthTokenOutput {\r
-
-                  } "
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  AuthTokenOutput {
+                      static _OPENAPI_METADATA_FACTORY() {
+                          return { accessToken: { required: true, type: () => String }, refreshToken: { required: true, type: () => String } };
+                      }
+                  } 
         "401":
           description: ""
           content:
@@ -169,9 +197,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class RegisterOutput {\r
-
-                  } "
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  RegisterOutput {
+                      static _OPENAPI_METADATA_FACTORY() {
+                          return { id: { required: true, type: () => Number }, name: { required: true, type: () => String }, username: { required: true, type: () => String }, roles: { required: true, enum: require("../constants/role.constant").ROLE, isArray: true }, email: { required: true, type: () => String }, isAccountDisabled: { required: true, type: () => Boolean }, createdAt: { required: true, type: () => String }, updatedAt: { required: true, type: () => String } };
+                      }
+                  } 
       tags:
         - auth
   /api/v1/auth/refresh-token:
@@ -191,9 +223,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class AuthTokenOutput {\r
-
-                  } "
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  AuthTokenOutput {
+                      static _OPENAPI_METADATA_FACTORY() {
+                          return { accessToken: { required: true, type: () => String }, refreshToken: { required: true, type: () => String } };
+                      }
+                  } 
         "401":
           description: ""
           content:
@@ -219,9 +255,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class ArticleOutput {\r
-
-                  } "
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  ArticleOutput {
+                      static _OPENAPI_METADATA_FACTORY() {
+                          return { id: { required: true, type: () => Number }, title: { required: true, type: () => String }, post: { required: true, type: () => String }, createdAt: { required: true, type: () => Date }, updatedAt: { required: true, type: () => Date }, author: { required: true, type: () => require("./author-output.dto").AuthorOutput } };
+                      }
+                  } 
       tags:
         - articles
       security:
@@ -235,12 +275,16 @@ paths:
           in: query
           description: Optional, defaults to 100
           schema:
+            minimum: 0
+            default: 100
             type: number
         - name: offset
           required: false
           in: query
           description: Optional, defaults to 0
           schema:
+            minimum: 0
+            default: 0
             type: number
       responses:
         "200":
@@ -248,9 +292,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class ArticleOutput {\r
-
-                  }  [ ] "
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  ArticleOutput {
+                      static _OPENAPI_METADATA_FACTORY() {
+                          return { id: { required: true, type: () => Number }, title: { required: true, type: () => String }, post: { required: true, type: () => String }, createdAt: { required: true, type: () => Date }, updatedAt: { required: true, type: () => Date }, author: { required: true, type: () => require("./author-output.dto").AuthorOutput } };
+                      }
+                  }  [ ] 
       tags:
         - articles
       security:
@@ -271,9 +319,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class ArticleOutput {\r
-
-                  } "
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  ArticleOutput {
+                      static _OPENAPI_METADATA_FACTORY() {
+                          return { id: { required: true, type: () => Number }, title: { required: true, type: () => String }, post: { required: true, type: () => String }, createdAt: { required: true, type: () => Date }, updatedAt: { required: true, type: () => Date }, author: { required: true, type: () => require("./author-output.dto").AuthorOutput } };
+                      }
+                  } 
         "404":
           description: ""
           content:
@@ -303,9 +355,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class ArticleOutput {\r
-
-                  } "
+                $ref: >-
+                  #/components/schemas/SwaggerBaseApiResponseFor class
+                  ArticleOutput {
+                      static _OPENAPI_METADATA_FACTORY() {
+                          return { id: { required: true, type: () => Number }, title: { required: true, type: () => String }, post: { required: true, type: () => String }, createdAt: { required: true, type: () => Date }, updatedAt: { required: true, type: () => Date }, author: { required: true, type: () => require("./author-output.dto").AuthorOutput } };
+                      }
+                  } 
       tags:
         - articles
       security:
@@ -320,6 +376,8 @@ paths:
           schema:
             type: number
       responses:
+        "200":
+          description: ""
         "204":
           description: ""
       tags:
@@ -900,11 +958,11 @@ components:
         username:
           type: string
         roles:
+          items:
+            type: array
           example:
             - USER
           type: array
-          items:
-            type: string
         email:
           type: string
         isAccountDisabled:
@@ -922,7 +980,7 @@ components:
         - isAccountDisabled
         - createdAt
         - updatedAt
-    "SwaggerBaseApiResponseFor class UserOutput {\r\n} ":
+    "SwaggerBaseApiResponseFor class UserOutput {\n    static _OPENAPI_METADATA_FACTORY() {\n        return { id: { required: true, type: () => Number }, name: { required: true, type: () => String }, username: { required: true, type: () => String }, roles: { required: true, enum: require(\"../../auth/constants/role.constant\").ROLE, isArray: true }, email: { required: true, type: () => String }, isAccountDisabled: { required: true, type: () => Boolean }, createdAt: { required: true, type: () => String }, updatedAt: { required: true, type: () => String } };\n    }\n} ":
       type: object
       properties:
         meta:
@@ -966,7 +1024,7 @@ components:
           $ref: "#/components/schemas/BaseApiErrorObject"
       required:
         - error
-    "SwaggerBaseApiResponseFor class UserOutput {\r\n}  [ ] ":
+    "SwaggerBaseApiResponseFor class UserOutput {\n    static _OPENAPI_METADATA_FACTORY() {\n        return { id: { required: true, type: () => Number }, name: { required: true, type: () => String }, username: { required: true, type: () => String }, roles: { required: true, enum: require(\"../../auth/constants/role.constant\").ROLE, isArray: true }, email: { required: true, type: () => String }, isAccountDisabled: { required: true, type: () => Boolean }, createdAt: { required: true, type: () => String }, updatedAt: { required: true, type: () => String } };\n    }\n}  [ ] ":
       type: object
       properties:
         meta:
@@ -983,13 +1041,17 @@ components:
       properties:
         name:
           type: string
+          maxLength: 100
         password:
           type: string
+          minLength: 6
+          maxLength: 100
     LoginInput:
       type: object
       properties:
         username:
           type: string
+          maxLength: 200
         password:
           type: string
       required:
@@ -1005,7 +1067,7 @@ components:
       required:
         - accessToken
         - refreshToken
-    "SwaggerBaseApiResponseFor class AuthTokenOutput {\r\n} ":
+    "SwaggerBaseApiResponseFor class AuthTokenOutput {\n    static _OPENAPI_METADATA_FACTORY() {\n        return { accessToken: { required: true, type: () => String }, refreshToken: { required: true, type: () => String } };\n    }\n} ":
       type: object
       properties:
         meta:
@@ -1020,17 +1082,35 @@ components:
       properties:
         name:
           type: string
+          maxLength: 100
         username:
           type: string
+          maxLength: 200
         password:
           type: string
+          minLength: 6
+          maxLength: 100
         email:
           type: string
+          maxLength: 100
+        roles:
+          type: array
+          default:
+            - USER
+          items:
+            type: string
+            enum:
+              - USER
+              - ADMIN
+        isAccountDisabled:
+          type: boolean
       required:
         - name
         - username
         - password
         - email
+        - roles
+        - isAccountDisabled
     RegisterOutput:
       type: object
       properties:
@@ -1041,11 +1121,11 @@ components:
         username:
           type: string
         roles:
+          items:
+            type: array
           example:
             - USER
           type: array
-          items:
-            type: string
         email:
           type: string
         isAccountDisabled:
@@ -1063,7 +1143,7 @@ components:
         - isAccountDisabled
         - createdAt
         - updatedAt
-    "SwaggerBaseApiResponseFor class RegisterOutput {\r\n} ":
+    "SwaggerBaseApiResponseFor class RegisterOutput {\n    static _OPENAPI_METADATA_FACTORY() {\n        return { id: { required: true, type: () => Number }, name: { required: true, type: () => String }, username: { required: true, type: () => String }, roles: { required: true, enum: require(\"../constants/role.constant\").ROLE, isArray: true }, email: { required: true, type: () => String }, isAccountDisabled: { required: true, type: () => Boolean }, createdAt: { required: true, type: () => String }, updatedAt: { required: true, type: () => String } };\n    }\n} ":
       type: object
       properties:
         meta:
@@ -1124,7 +1204,7 @@ components:
         - createdAt
         - updatedAt
         - author
-    "SwaggerBaseApiResponseFor class ArticleOutput {\r\n} ":
+    "SwaggerBaseApiResponseFor class ArticleOutput {\n    static _OPENAPI_METADATA_FACTORY() {\n        return { id: { required: true, type: () => Number }, title: { required: true, type: () => String }, post: { required: true, type: () => String }, createdAt: { required: true, type: () => Date }, updatedAt: { required: true, type: () => Date }, author: { required: true, type: () => require(\"./author-output.dto\").AuthorOutput } };\n    }\n} ":
       type: object
       properties:
         meta:
@@ -1134,7 +1214,7 @@ components:
       required:
         - meta
         - data
-    "SwaggerBaseApiResponseFor class ArticleOutput {\r\n}  [ ] ":
+    "SwaggerBaseApiResponseFor class ArticleOutput {\n    static _OPENAPI_METADATA_FACTORY() {\n        return { id: { required: true, type: () => Number }, title: { required: true, type: () => String }, post: { required: true, type: () => String }, createdAt: { required: true, type: () => Date }, updatedAt: { required: true, type: () => Date }, author: { required: true, type: () => require(\"./author-output.dto\").AuthorOutput } };\n    }\n}  [ ] ":
       type: object
       properties:
         meta:
@@ -1179,7 +1259,29 @@ components:
         - pageCount
     Course:
       type: object
-      properties: {}
+      properties:
+        id:
+          type: number
+        systemId:
+          type: number
+        subject:
+          type: string
+        courseCode:
+          type: string
+        section:
+          type: string
+        title:
+          type: string
+        credits:
+          type: number
+      required:
+        - id
+        - systemId
+        - subject
+        - courseCode
+        - section
+        - title
+        - credits
     CreateManyCourseDto:
       type: object
       properties:

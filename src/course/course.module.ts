@@ -1,5 +1,5 @@
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Module } from '@nestjsx/common';
 
 import { JwtAuthStrategy } from '../auth/strategies/jwt-auth.strategy';
 import { SharedModule } from '../shared/shared.module';
