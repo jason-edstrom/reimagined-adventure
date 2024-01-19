@@ -18,11 +18,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/SwaggerBaseApiResponseFor class
-                  UserOutput {
+                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class UserOutput {\r
 
-                  } 
+                  } "
         "401":
           description: ""
           content:
@@ -56,11 +54,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/SwaggerBaseApiResponseFor class
-                  UserOutput {
+                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class UserOutput {\r
 
-                  }  [ ] 
+                  }  [ ] "
         "401":
           description: ""
           content:
@@ -85,11 +81,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/SwaggerBaseApiResponseFor class
-                  UserOutput {
+                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class UserOutput {\r
 
-                  } 
+                  } "
         "404":
           description: ""
           content:
@@ -119,11 +113,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/SwaggerBaseApiResponseFor class
-                  UserOutput {
+                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class UserOutput {\r
 
-                  } 
+                  } "
         "404":
           description: ""
           content:
@@ -149,11 +141,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/SwaggerBaseApiResponseFor class
-                  AuthTokenOutput {
+                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class AuthTokenOutput {\r
 
-                  } 
+                  } "
         "401":
           description: ""
           content:
@@ -179,11 +169,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/SwaggerBaseApiResponseFor class
-                  RegisterOutput {
+                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class RegisterOutput {\r
 
-                  } 
+                  } "
       tags:
         - auth
   /api/v1/auth/refresh-token:
@@ -203,11 +191,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/SwaggerBaseApiResponseFor class
-                  AuthTokenOutput {
+                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class AuthTokenOutput {\r
 
-                  } 
+                  } "
         "401":
           description: ""
           content:
@@ -233,11 +219,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/SwaggerBaseApiResponseFor class
-                  ArticleOutput {
+                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class ArticleOutput {\r
 
-                  } 
+                  } "
       tags:
         - articles
       security:
@@ -264,11 +248,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/SwaggerBaseApiResponseFor class
-                  ArticleOutput {
+                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class ArticleOutput {\r
 
-                  }  [ ] 
+                  }  [ ] "
       tags:
         - articles
       security:
@@ -289,11 +271,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/SwaggerBaseApiResponseFor class
-                  ArticleOutput {
+                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class ArticleOutput {\r
 
-                  } 
+                  } "
         "404":
           description: ""
           content:
@@ -323,11 +303,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/SwaggerBaseApiResponseFor class
-                  ArticleOutput {
+                $ref: "#/components/schemas/SwaggerBaseApiResponseFor class ArticleOutput {\r
 
-                  } 
+                  } "
       tags:
         - articles
       security:
@@ -346,6 +324,558 @@ paths:
           description: ""
       tags:
         - articles
+  "/api/v1/courses/{id}":
+    get:
+      operationId: getOneBaseCoursesControllerCourse
+      summary: Retrieve a single Course
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+        - name: fields
+          description: Selects resource fields. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#select"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: false
+        - name: join
+          description: Adds relational resources. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#join"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: cache
+          description: Reset cache (if was enabled). <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#cache"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 1
+      responses:
+        "200":
+          description: Get one base response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Course"
+      tags:
+        - courses
+    patch:
+      operationId: updateOneBaseCoursesControllerCourse
+      summary: Update a single Course
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Course"
+      responses:
+        "200":
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Course"
+      tags:
+        - courses
+    put:
+      operationId: replaceOneBaseCoursesControllerCourse
+      summary: Replace a single Course
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Course"
+      responses:
+        "200":
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Course"
+      tags:
+        - courses
+    delete:
+      operationId: deleteOneBaseCoursesControllerCourse
+      summary: Delete a single Course
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Delete one base response
+      tags:
+        - courses
+  /api/v1/courses:
+    get:
+      operationId: getManyBaseCoursesControllerCourse
+      summary: Retrieve multiple Courses
+      parameters:
+        - name: fields
+          description: Selects resource fields. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#select"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: false
+        - name: s
+          description: Adds search condition. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#search"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: filter
+          description: Adds filter condition. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#filter"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: or
+          description: Adds OR condition. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#or"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: sort
+          description: Adds sort by field. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#sort"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: join
+          description: Adds relational resources. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#join"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: limit
+          description: Limit amount of resources. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#limit"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          description: Offset amount of resources. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#offset"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: integer
+        - name: page
+          description: Page portion of resources. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#page"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: integer
+        - name: cache
+          description: Reset cache (if was enabled). <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#cache"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 1
+      responses:
+        "200":
+          description: Get many base response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/GetManyCourseResponseDto"
+                  - type: array
+                    items:
+                      $ref: "#/components/schemas/Course"
+      tags:
+        - courses
+    post:
+      operationId: createOneBaseCoursesControllerCourse
+      summary: Create a single Course
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Course"
+      responses:
+        "201":
+          description: Get create one base response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Course"
+      tags:
+        - courses
+  /api/v1/courses/bulk:
+    post:
+      operationId: createManyBaseCoursesControllerCourse
+      summary: Create multiple Courses
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateManyCourseDto"
+      responses:
+        "201":
+          description: Get create many base response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Course"
+      tags:
+        - courses
+  "/api/v1/imports/{id}":
+    get:
+      operationId: getOneBaseImportsControllerImport
+      summary: Retrieve a single Import
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+        - name: fields
+          description: Selects resource fields. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#select"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: false
+        - name: join
+          description: Adds relational resources. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#join"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: cache
+          description: Reset cache (if was enabled). <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#cache"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 1
+      responses:
+        "200":
+          description: Get one base response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Import"
+      tags:
+        - imports
+    patch:
+      operationId: updateOneBaseImportsControllerImport
+      summary: Update a single Import
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Import"
+      responses:
+        "200":
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Import"
+      tags:
+        - imports
+    put:
+      operationId: replaceOneBaseImportsControllerImport
+      summary: Replace a single Import
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Import"
+      responses:
+        "200":
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Import"
+      tags:
+        - imports
+    delete:
+      operationId: deleteOneBaseImportsControllerImport
+      summary: Delete a single Import
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Delete one base response
+      tags:
+        - imports
+  /api/v1/imports:
+    get:
+      operationId: getManyBaseImportsControllerImport
+      summary: Retrieve multiple Imports
+      parameters:
+        - name: fields
+          description: Selects resource fields. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#select"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: false
+        - name: s
+          description: Adds search condition. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#search"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: filter
+          description: Adds filter condition. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#filter"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: or
+          description: Adds OR condition. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#or"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: sort
+          description: Adds sort by field. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#sort"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: join
+          description: Adds relational resources. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#join"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: limit
+          description: Limit amount of resources. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#limit"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          description: Offset amount of resources. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#offset"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: integer
+        - name: page
+          description: Page portion of resources. <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#page"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: integer
+        - name: cache
+          description: Reset cache (if was enabled). <a
+            href="https://github.com/nestjsx/crud/wiki/Requests#cache"
+            target="_blank">Docs</a>
+          required: false
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 1
+      responses:
+        "200":
+          description: Get many base response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/GetManyImportResponseDto"
+                  - type: array
+                    items:
+                      $ref: "#/components/schemas/Import"
+      tags:
+        - imports
+    post:
+      operationId: createOneBaseImportsControllerImport
+      summary: Create a single Import
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Import"
+      responses:
+        "201":
+          description: Get create one base response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Import"
+      tags:
+        - imports
+  /api/v1/imports/bulk:
+    post:
+      operationId: createManyBaseImportsControllerImport
+      summary: Create multiple Imports
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateManyImportDto"
+      responses:
+        "201":
+          description: Get create many base response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Import"
+      tags:
+        - imports
 info:
   title: Nestjs API starter
   description: Nestjs API description
@@ -392,7 +922,7 @@ components:
         - isAccountDisabled
         - createdAt
         - updatedAt
-    "SwaggerBaseApiResponseFor class UserOutput {\n} ":
+    "SwaggerBaseApiResponseFor class UserOutput {\r\n} ":
       type: object
       properties:
         meta:
@@ -436,7 +966,7 @@ components:
           $ref: "#/components/schemas/BaseApiErrorObject"
       required:
         - error
-    "SwaggerBaseApiResponseFor class UserOutput {\n}  [ ] ":
+    "SwaggerBaseApiResponseFor class UserOutput {\r\n}  [ ] ":
       type: object
       properties:
         meta:
@@ -475,7 +1005,7 @@ components:
       required:
         - accessToken
         - refreshToken
-    "SwaggerBaseApiResponseFor class AuthTokenOutput {\n} ":
+    "SwaggerBaseApiResponseFor class AuthTokenOutput {\r\n} ":
       type: object
       properties:
         meta:
@@ -533,7 +1063,7 @@ components:
         - isAccountDisabled
         - createdAt
         - updatedAt
-    "SwaggerBaseApiResponseFor class RegisterOutput {\n} ":
+    "SwaggerBaseApiResponseFor class RegisterOutput {\r\n} ":
       type: object
       properties:
         meta:
@@ -594,7 +1124,7 @@ components:
         - createdAt
         - updatedAt
         - author
-    "SwaggerBaseApiResponseFor class ArticleOutput {\n} ":
+    "SwaggerBaseApiResponseFor class ArticleOutput {\r\n} ":
       type: object
       properties:
         meta:
@@ -604,7 +1134,7 @@ components:
       required:
         - meta
         - data
-    "SwaggerBaseApiResponseFor class ArticleOutput {\n}  [ ] ":
+    "SwaggerBaseApiResponseFor class ArticleOutput {\r\n}  [ ] ":
       type: object
       properties:
         meta:
@@ -626,3 +1156,126 @@ components:
       required:
         - title
         - post
+    GetManyCourseResponseDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Course"
+        count:
+          type: number
+        total:
+          type: number
+        page:
+          type: number
+        pageCount:
+          type: number
+      required:
+        - data
+        - count
+        - total
+        - page
+        - pageCount
+    Course:
+      type: object
+      properties: {}
+    CreateManyCourseDto:
+      type: object
+      properties:
+        bulk:
+          type: array
+          items:
+            $ref: "#/components/schemas/Course"
+      required:
+        - bulk
+    GetManyImportResponseDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Import"
+        count:
+          type: number
+        total:
+          type: number
+        page:
+          type: number
+        pageCount:
+          type: number
+      required:
+        - data
+        - count
+        - total
+        - page
+        - pageCount
+    Import:
+      type: object
+      properties:
+        id:
+          type: number
+        subject:
+          type: string
+        courseCode:
+          type: string
+        section:
+          type: string
+        title:
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        time:
+          type: string
+        credits:
+          type: number
+        status:
+          type: string
+        instructor:
+          type: string
+        deliveryMethod:
+          type: string
+        buildingRoom:
+          type: string
+        classSize:
+          type: number
+        enrolled:
+          type: number
+        tuitionResident:
+          type: number
+        tuitionNonResident:
+          type: number
+        courseFees:
+          type: number
+      required:
+        - id
+        - subject
+        - courseCode
+        - section
+        - title
+        - startDate
+        - endDate
+        - time
+        - credits
+        - status
+        - instructor
+        - deliveryMethod
+        - buildingRoom
+        - classSize
+        - enrolled
+        - tuitionResident
+        - tuitionNonResident
+        - courseFees
+    CreateManyImportDto:
+      type: object
+      properties:
+        bulk:
+          type: array
+          items:
+            $ref: "#/components/schemas/Import"
+      required:
+        - bulk
