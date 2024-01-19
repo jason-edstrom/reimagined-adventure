@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
-      - run: nx ci
+      - run: npm ci
       - name: Run test cov
         run: nx affected:test --codeCoverage
       - name: SonarCloud Scan
